@@ -1,0 +1,9 @@
+<div class="section <%= generator_name %>">
+  <h1>Sinatra Routes</h1>
+  
+  <% object[:routes].each do |route| %>
+    <div class="section method">
+      <%= yield route %>
+    </div>
+  <% end %>
+</div>
