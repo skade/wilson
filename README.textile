@@ -1,6 +1,6 @@
 h1. Wilson documents Sinatra
 
-Wilson is a YARD plugin to document Sinatra apps.
+Wilson is a YARD plugin to document Sinatra apps (especially Routes).
 
 To use Wilson, you need Ruby 1.9 as well as the newest release version of YARD (sudo gem19 install yard).
 
