@@ -2,6 +2,6 @@ h1. Wilson documents Sinatra
 
 Wilson is a YARD plugin to document Sinatra apps.
 
-To use Wilson, you need Ruby 1.9 as well as the newest version of YARD (possibly edge?).
+To use Wilson, you need Ruby 1.9 as well as the newest release version of YARD (sudo gem19 install yard).
 
 After building and installing the Wilson Gem, just require 'wilson' instead of 'yard'. If you need a project to play with, try tsung-stats-server: http://github.com/skade/tsung-stats-server/
