@@ -13,7 +13,7 @@ gem = Gem::Specification.new do |gem|
   gem.summary     = "Wilson documents Sinatra"
   
   gem.description = "Wilson is Sinatras first Biographer"
-  
+  gem.bindir      = "bin"
   gem.homepage    = "http://skadesgems.rubyforge.org"
   gem.files       = FileList['**/*'].exclude('_darcs')
   gem.has_rdoc    = true

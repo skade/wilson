@@ -27,7 +27,7 @@ module Wilson
             hsh[:properties][tag.tag_name] = { 
                                               :types => tag.types, 
                                               :desc  => tag.text
-                                            }
+                                             }
           end
           
           hsh

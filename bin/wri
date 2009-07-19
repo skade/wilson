@@ -1,0 +1,38 @@
+#!/usr/bin/ruby
+#
+# Usage:
+#
+#   wri [CodePath] 
+
+
+require File.dirname(__FILE__) + '/../lib/wilson'
+require 'yaml'
+
+YARD::Registry.load
+
+code_obj = YARD::Registry.at(ARGV[0])
+
+unless ARGV[1]
+  puts "Routes for #{ARGV[0]}"
+  yaml = code_obj[:routes].map do |route|
+             route.route
+         end.to_yaml
+  puts yaml
+else  
+  route = code_obj[:routes].find {|r| r.route == ARGV[1]}
+  
+  if route
+    puts <<-DOC
+Documentation for Route #{ARGV[1]} in Application #{ARGV[0]}:
+
+#{route.docstring}
+
+DOC
+
+route.tags.each do |tag|
+  puts "#{tag.tag_name}: #{tag.types} #{tag.text}"
+end
+  else
+    puts "No Route #{ARGV[1]} for Application #{ARGV[0]}"
+  end
+end
