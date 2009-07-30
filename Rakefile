@@ -1,5 +1,6 @@
 require 'yard'
 require 'rake/gempackagetask'
+require 'rake/testtask'
 
 gem = Gem::Specification.new do |gem|
   gem.author      = "Florian Gilcher"
@@ -20,3 +21,7 @@ gem = Gem::Specification.new do |gem|
 end
 
 Rake::GemPackageTask.new(gem).define
+
+Rake::TestTask.new do |t|
+  t.pattern = 'test/**/*_test.rb'
+end

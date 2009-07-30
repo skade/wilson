@@ -1,0 +1,11 @@
+class Calls < Sinatra::Application
+  
+  get t"/test/{bla}" do
+  
+  end
+  
+  # this is not supported
+  #post Addressable::Template.new("/test/{bla}") do
+  #  
+  #end
+end

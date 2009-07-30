@@ -1,0 +1,11 @@
+class RegularExpressions < Sinatra::Application
+  
+  get %r{/foo/bar} do
+    
+  end
+  
+  post /foo\/bar/ do
+    
+  end
+  
+end

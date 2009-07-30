@@ -1,3 +1,5 @@
+require 'coderay'
+
 module YARD
   module Generators
     class ClassGenerator      
@@ -9,7 +11,7 @@ module YARD
             G(MixinsGenerator, :scope => :class),
             G(MixinsGenerator, :scope => :instance),
             G(DocstringGenerator), 
-            G(TagsGenerator),
+            G(Wilson::TagsGenerator),
             G(AttributesGenerator), 
             G(ConstantsGenerator),
             G(ConstructorGenerator),
@@ -23,17 +25,21 @@ module YARD
       end
     end
     
-    module HTTP
+    module Wilson
       class TagsGenerator < YARD::Generators::TagsGenerator
         before_section :todo, :has_todo?
         
         def sections_for(object)
           sections = [
-            :header, [ :url_param, :get, :post, :output_types, :output_languages,
+            :header, [ :resource, :url_param, :get, :post, :output_types, :output_languages,
               :example, :raise, :todo, :author, :version, :since, :see ]
           ]
           sections
         end
+        
+        #def resource(object)
+        #  render_tags :resource
+        #end
         
         def url_param(object)
           render_tags :url_param, :no_types => true
@@ -66,7 +72,7 @@ module YARD
             :title,
             [
               G(DocstringGenerator),
-              G(HTTP::TagsGenerator),
+              G(Wilson::TagsGenerator),
               G(SourceGenerator)
             ]
           ]

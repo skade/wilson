@@ -1,9 +1,6 @@
 module YARD::CodeObjects
   class SinatraRoute < Base
-    attr_accessor :http_method, :route
+    attr_accessor :http_method, :route, :parameters
     
-    def parameters
-      []
-    end
   end
 end

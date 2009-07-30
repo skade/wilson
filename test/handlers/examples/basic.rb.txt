@@ -1,0 +1,9 @@
+class Basic < Sinatra::Application
+  get "/foo/:bar" do
+    
+  end
+  
+  post "/foo" do
+    
+  end
+end
