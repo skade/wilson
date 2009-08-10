@@ -2,7 +2,7 @@
 #
 # Usage:
 #
-#   wri [CodePath] 
+#   wri [codepath] [number]
 
 
 require File.dirname(__FILE__) + '/../lib/wilson'
@@ -13,25 +13,29 @@ YARD::Registry.load
 code_obj = YARD::Registry.at(ARGV[0])
 
 unless ARGV[1]
-  puts "Routes for #{ARGV[0]}"
-  yaml = code_obj[:routes].map do |route|
-             route.route
-         end.to_yaml
-  puts yaml
-else  
-  route = code_obj[:routes].find {|r| r.route == ARGV[1]}
+  puts "Routes for #{ARGV[0]}:"
+  code_obj[:routes].each_with_index do |route, index|
+    puts (["#{index + 1}.", route.http_method, route.route].join " ")
+  end
+else
+  if ARGV[1] =~ /^\d+$/
+    route = code_obj[:routes][ARGV[1].to_i - 1]
+  else  
+    route = code_obj[:routes].find {|r| r.route == ARGV[1]}
+  end
   
   if route
     puts <<-DOC
-Documentation for Route #{ARGV[1]} in Application #{ARGV[0]}:
+Documentation for Route #{route.route} in Application #{ARGV[0]}:
 
 #{route.docstring}
 
 DOC
 
-route.tags.each do |tag|
-  puts "#{tag.tag_name}: #{tag.types} #{tag.text}"
-end
+    route.tags.each_with_index do |tag, index|
+      puts "#{tag.tag_name}: #{tag.types} #{tag.text}"
+    end
+
   else
     puts "No Route #{ARGV[1]} for Application #{ARGV[0]}"
   end

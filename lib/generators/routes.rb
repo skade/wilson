@@ -31,7 +31,7 @@ module YARD
         
         def sections_for(object)
           sections = [
-            :header, [ :resource, :url_param, :get, :post, :output_types, :output_languages,
+            :header, [ :representation, :url_param, :get, :post, :output_types, :output_languages,
               :example, :raise, :todo, :author, :version, :since, :see ]
           ]
           sections
@@ -69,12 +69,10 @@ module YARD
       def sections_for(object)
         [:header,
           [ 
-            :title,
-            [
-              G(DocstringGenerator),
-              G(Wilson::TagsGenerator),
-              G(SourceGenerator)
-            ]
+            :route,
+            G(DocstringGenerator),
+            G(Wilson::TagsGenerator),
+            G(SourceGenerator)
           ]
         ]
       end
