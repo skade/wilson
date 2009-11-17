@@ -1,0 +1,8 @@
+<% if route_listing.size > 0 %>
+  <h2>HTTP Interfaces</h2>
+  <ul class="summary">
+    <% route_listing.each do |route| %>
+      <%= yieldall :route_item => route %>
+    <% end %>
+  </ul>
+<% end %>

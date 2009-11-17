@@ -1,19 +1,20 @@
 <% if object.has_tag?(:representation) %>
-<div class="resources">
+<div class="resources examples">
   <% if object.tags(:representation).size == 1 %>
+  
     <h3>Representation served by this class: 
-    <small><%= object.tag(:representation).name %></small></h3>
+    <small><%= htmlify_line(object.tag(:representation)[0].name) %></small></h3>
     <div class="docstring">
-      <pre class="code"><%= CodeRay.scan(object.tag(:representation).text, 
+      <pre class="example code"><%= CodeRay.scan(object.tag(:representation).text, 
       object.tag(:representation).name.to_sym).html(:css => :style) %></pre>
     </div>
   <% else %>
     <h3>Representations served by this class:</h3>
     <% object.tags(:representation).each do |tag| %>
     <dl>
-      <dt><%= tag.name %></dt>
+      <dt><%= htmlify_line(tag.name) %></dt>
       <dd class="docstring">
-        <pre class="code"><%= CodeRay.scan(tag.text, 
+        <pre class="example code"><%= CodeRay.scan(tag.text, 
         tag.name.to_sym).html(:css => :style) %></pre>
       </dd>
     </dl>

@@ -1,7 +1,6 @@
-
 module YARD::Handlers::Ruby
   class SinatraRouteHandler < Base
-    %w(get post put delete head trace).each do |http_method|
+    [:get, :post, :put, :delete, :head, :trace].each do |http_method|
       handles method_call(http_method)
     end
     
@@ -33,7 +32,7 @@ module YARD::Handlers::Ruby
         warn("Wilson does not support generating docs for Calls")
         return
       end
-      
+            
       owner[:routes] ||= []
 
       owner[:routes] << register(SinatraRoute.new(namespace, route_string)) do |o|
@@ -71,3 +70,4 @@ module YARD::Handlers::Ruby
     end
   end
 end
+

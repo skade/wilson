@@ -1,5 +1,4 @@
-require 'lib/wilson'
-require 'rubygems'
+require 'wilson'
 require 'shoulda'
 require 'test/unit'
 

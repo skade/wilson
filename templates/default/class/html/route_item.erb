@@ -1,0 +1,12 @@
+<li>
+  <span class="summary_signature">
+    <%= route_signature(@route_item, true, false) %>
+  </span>
+  <% if @route_item.has_tag?(:deprecated) %><span class="deprecated note title">Deprecated</span><% end %>
+
+  <% if @route_item.has_tag?(:deprecated) %>
+    <span class="summary_desc"><strong>Deprecated.</strong> <%= htmlify_line @route_item.tag(:deprecated).text %></span>
+  <% else %>
+    <span class="summary_desc"><%= htmlify_line docstring_summary(@route_item) %></span>
+  <% end %>
+</li>

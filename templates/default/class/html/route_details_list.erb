@@ -1,0 +1,8 @@
+<% if route_listing.size > 0 %>
+  <div id="method_details">
+    <h2>Route Details</h2>
+    <% route_listing.each_with_index do |route, i| %>
+      <%= yieldall :object => route, :index => i %>
+    <% end %>
+  </div>
+<% end %>
